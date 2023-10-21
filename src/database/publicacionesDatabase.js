@@ -2,13 +2,13 @@ const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('./src/database/RGCP_DB.db');
 
 //Guarda la info de una nueva publicacion
-function CreatePubli(categorias, img, texto, fechaDeRealizacion, callback) {
-    db.run("INSERT INTO publicaciones (categorias, img, texto, fechaDeRealizacion) VALUES (?, ?, ?, ?)", [categorias, img, texto, fechaDeRealizacion], callback);
+function CreatePubli(institucionName, img, categorias, descripcion, callback) {
+    db.run("INSERT INTO publicaciones (institucionName, img, categorias, descripcion) VALUES (?, ?, ?, ?)", [institucionName, img, categorias, descripcion], callback);
 }
 
 //Devuelve todos las publicaciones
 function ReadAllPubli(callback) {
-    db.all("SELECT rowid AS publicacionID, categorias, img, texto, fechaDeRealizacion FROM publicaciones", callback);
+    db.all("SELECT rowid AS publicacionID, institucionName, img, categorias, descripcion FROM publicaciones", callback);
 }
 
 //Devuelve una publicacion especifica
@@ -17,8 +17,8 @@ function ReadPubli(publicacionID, callback) {
 }
 
 //Actualiza los datos de una publicacion especificada por su id
-function UpdatePubli(categorias, img, texto, fechaDeRealizacion, publicacionID, callback) {
-    db.run("UPDATE publicaciones SET categorias = ?, img = ?, texto = ?, fechaDeRealizacion = ? WHERE publicacionID = ?", [categorias, img, texto, fechaDeRealizacion, publicacionID], callback);
+function UpdatePubli(institucionName, img, categorias, descripcion, publicacionID, callback) {
+    db.run("UPDATE publicaciones SET institucionName = ?, img = ?, categorias = ?, descripcion = ? WHERE publicacionID = ?", [institucionName, img, categorias, descripcion, publicacionID], callback);
 }
 
 //Elimina a una publicacion especificada por su id
