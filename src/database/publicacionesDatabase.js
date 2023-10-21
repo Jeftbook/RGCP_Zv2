@@ -25,3 +25,11 @@ function UpdatePubli(categorias, img, texto, fechaDeRealizacion, publicacionID, 
 function DeletePubli(publicacionID, callback) {
     db.run("DELETE FROM publicaciones WHERE publicacionID = ?", [publicacionID], callback);
 }
+
+module.exports = {
+    CreatePubli,
+    ReadAllPubli,
+    ReadPubli,
+    UpdatePubli,
+    DeletePubli
+}
