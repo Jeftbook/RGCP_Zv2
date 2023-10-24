@@ -11,7 +11,10 @@ function ReadAllPubli(callback) {
     db.all("SELECT rowid AS publicacionID, institucionName, img, categorias, descripcion FROM publicaciones", callback);
 }
 
-//Devuelve una publicacion especifica
+/**
+ * Devuelve una publicacion especifica
+ * @param {id} publicacionID Id a buscar
+ */
 function ReadPubli(publicacionID, callback) {
     db.get("SELECT * FROM publicaciones WHERE publicacionID = ?", [publicacionID], callback);
 }
